@@ -1,0 +1,19 @@
+.button {
+    font-size: 0.9em;
+    padding: 10px 20px;
+    border-radius: 100px;
+    background-color: #fff;
+    border: 1px solid $light-gray;
+    cursor: pointer;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+
+    &:hover {
+        background-color: lighten($light-gray, 20%);
+    }
+
+    &.block {
+        display: block;
+        width: 100%;
+    }
+}
