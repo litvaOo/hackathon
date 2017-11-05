@@ -26,6 +26,13 @@
         margin: 0;
     }
 
+    &.twice {
+        display: inline-block;
+        width: 50%;
+        text-align: center;
+        margin: 0;
+    }
+
     &.link {
         border: none;
         color: $gray;
@@ -40,6 +47,7 @@
         color: white;
         border: 1px solid darken($color, 10%);
     }
+
     &.google {
         $color: #D34836;
         background-color: $color;

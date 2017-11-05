@@ -214,4 +214,26 @@ footer {
       }
     }
   }
+  .signup-form {
+    form {
+      width: 500px;
+      .main {
+        .login-form-input {
+          label {
+            width: 170px;
+          }
+          input {
+            width: 280px;
+          }
+        }
+      }
+      .social-section {
+        &-or {
+          hr {
+            width: 180px;
+          }
+        }
+      }
+    }
+  }
 }
