@@ -156,10 +156,22 @@ footer {
       border-radius: 8px;
       .header {
         border-radius: 8px 8px 0 0;
-        background-color: #299245;
+        background-color: $green;
         text-align: center;
         padding: 5px;
         color: white;
+        position: relative;
+        .close-button {
+          position: absolute;
+          right: 0;
+          top: 0;
+          padding: 0 20px;
+          height: 44px;
+          line-height: 44px;
+          cursor: pointer;
+          color: $white;
+          text-decoration: none;
+        }
       }
       .main {
         padding: 20px;
