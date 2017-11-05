@@ -188,6 +188,30 @@ footer {
           }
         }
       }
+      .social-section {
+        text-align: center;
+        &-or {
+          hr, span {
+            display: inline-block;
+            vertical-align: middle;
+          }
+          hr {
+            width: 100px;
+            border: 0;
+            border-top: 1px solid $light-gray;
+          }
+          span {
+            height: 40px;
+            width: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            border: 1px solid $light-gray;
+            font-size: 15px;
+            text-transform: uppercase;
+          }
+        }
+      }
     }
   }
 }
