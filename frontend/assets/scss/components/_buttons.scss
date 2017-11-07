@@ -1,0 +1,58 @@
+.button {
+  font-size: 0.9em;
+  padding: 10px 20px;
+  border-radius: 100px;
+  background-color: #fff;
+  border: 1px solid $light-gray;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  margin: 5px 0;
+  color: #000;
+  text-decoration: none;
+
+  &:hover {
+    background-color: lighten($light-gray, 20%);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.block {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+  }
+
+  &.twice {
+    display: inline-block;
+    width: 49%;
+    text-align: center;
+    margin: 0;
+  }
+
+  &.link {
+    border: none;
+    color: $gray;
+    &:hover {
+      background-color: inherit;
+    }
+  }
+
+  &.facebook {
+    $color: #3b5998;
+    background-color: $color;
+    color: white;
+    border: 1px solid darken($color, 10%);
+    margin-right: 4px;
+  }
+
+  &.google {
+    $color: #d34836;
+    background-color: $color;
+    color: white;
+    border: 1px solid darken($color, 10%);
+  }
+}

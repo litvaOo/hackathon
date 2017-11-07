@@ -1,5 +1,5 @@
-@import "colors";
-@import "buttons";
+@import "variables/colors";
+@import "components/buttons";
 
 html,
 body {
@@ -12,10 +12,30 @@ body {
   font-family: "Raleway", sans-serif;
   // font-family: "Muli", sans-serif;
 }
+body {
+  &.no-scoll {
+    overflow: hidden;
+  }
+}
 
 * * {
   box-sizing: border-box;
 }
+
+.modal {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  z-index: 999;
+}
+
 nav {
   padding: 20px;
   position: absolute;
@@ -25,7 +45,11 @@ nav {
   transition: background 0.5s ease;
 
   &.top {
-    background-image: linear-gradient(to bottom, rgba(100,100,100,0.5), transparent);
+    background-image: linear-gradient(
+      to bottom,
+      rgba(100, 100, 100, 0.5),
+      transparent
+    );
   }
 
   &.scrolled {
@@ -94,7 +118,8 @@ section {
     &:before {
       margin-left: 50%;
     }
-    &:before, &:after {
+    &:before,
+    &:after {
       display: block;
       content: "";
       width: 50%;
@@ -123,7 +148,8 @@ section {
       display: table-cell;
       vertical-align: middle;
       text-align: center;
-      h1, h2 {
+      h1,
+      h2 {
         margin: 0;
         padding: 0;
         color: $white;
@@ -145,7 +171,7 @@ footer {
   height: 100%;
   width: 100%;
   display: table;
-  background-color: $gray;
+  background-color: rgba($gray, 0.7);
   .login-form {
     display: table-cell;
     vertical-align: middle;
@@ -177,16 +203,18 @@ footer {
         padding: 20px;
         .login-form-input {
           margin-bottom: 15px;
-          label, input{
+          label,
+          input {
             display: inline-block;
             vertical-align: middle;
+            margin: 0 5px;
           }
           label {
-            width:100px;
+            width: 100px;
             text-align: right;
           }
           input {
-            width: 200px;
+            width: 180px;
             padding: 7px;
             font-size: 16px;
             font-family: "Raleway", sans-serif;
@@ -203,7 +231,8 @@ footer {
       .social-section {
         text-align: center;
         &-or {
-          hr, span {
+          hr,
+          span {
             display: inline-block;
             vertical-align: middle;
           }
@@ -235,7 +264,7 @@ footer {
             width: 170px;
           }
           input {
-            width: 280px;
+            width: 270px;
           }
         }
       }

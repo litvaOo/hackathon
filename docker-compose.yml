@@ -1,0 +1,35 @@
+version: '3'
+services:
+    backend:
+        build: ./backend/
+        container_name: hackathon-backend
+        working_dir: /var/www/hackathon
+        ports:
+            - 8000:8000
+        volumes:
+            - ./backend/:/var/www/hackathon
+            - ./frontend/:/var/www/hackathon/static/
+            - ./downloads/:/var/www/downloads
+        command: python manage.py runserver 0.0.0.0:8000
+        env_file:
+            - .env
+        depends_on:
+            - database
+    database:
+        image: postgres:9.6
+        container_name: hackathon-database
+        volumes:
+            - ./downloads/:/var/www/downloads
+        environment:
+            - PGHOST=hackathon-database
+            - PGUSER=postgres
+    frontend:
+        image: node:8
+        container_name: hackathon-frontend
+        working_dir: /var/www/hackathon/static/
+        command: yarn start
+        volumes:
+            - ./backend/:/var/www/hackathon
+            - ./frontend/:/var/www/hackathon/static/
+            - ./downloads/:/var/www/downloads
+
