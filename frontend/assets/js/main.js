@@ -4,13 +4,15 @@ jQuery.fn.showModal = function(selector) {
   }
   jQuery(selector).fadeIn("fast");
   jQuery("body").addClass("no-scoll");
-  return $(this);
+  jQuery("#full-page").fullpage.setAllowScrolling(false);
+  return jQuery(this);
 };
 
 jQuery.fn.hideModal = function() {
   jQuery(".modal:visible").fadeOut("fast");
   jQuery("body").removeClass("no-scoll");
-  return $(this);
+  jQuery("#full-page").fullpage.setAllowScrolling(true);
+  return jQuery(this);
 };
 
 jQuery(document).ready(function($) {
@@ -21,6 +23,8 @@ jQuery(document).ready(function($) {
       percentage: 62,
       property: "translate"
     },
+    navigation: true,
+    navigationPosition: "right",
     onLeave: function(index, nextIndex, direction) {
       if (index === 1) {
         $("nav.top")
@@ -29,11 +33,10 @@ jQuery(document).ready(function($) {
           .slideDown("fast");
       }
       if (nextIndex === 1) {
-        $.when($("nav").slideUp("fast")).then(function() {
-          $(this)
-            .addClass("top")
-            .fadeIn("fast");
-        });
+        $("nav")
+          .hide()
+          .addClass("top")
+          .fadeIn("400");
       }
     }
   });
@@ -43,4 +46,16 @@ jQuery(document).ready(function($) {
       event.preventDefault();
       $(this).hideModal();
     });
+  $(".login-link").on("click", function(event) {
+    event.preventDefault();
+    $(this)
+      .hideModal()
+      .showModal("#modal-login");
+  });
+  $(".signup-link").on("click", function(event) {
+    event.preventDefault();
+    $(this)
+      .hideModal()
+      .showModal("#modal-signup");
+  });
 });

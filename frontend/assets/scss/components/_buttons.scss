@@ -36,8 +36,9 @@
   &.link {
     border: none;
     color: $gray;
+    background-color: transparent;
     &:hover {
-      background-color: inherit;
+      background-color: transparent;
     }
   }
 
