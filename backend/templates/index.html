@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 {% block title %}Home page{% endblock title %}
+
+{% block extra_head %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
+{% endblock extra_head %}
+  
 {% block content %}
     <div id="full-page">
         <div id="search-section" class="section bg-image">
@@ -7,7 +13,14 @@
                 <h1 class="text-center text-white mb-5 pacifico">Найди СВОЙ ПУТЬ</h1>
                 <form class="form-inline justify-content-center">
                     <div class="input-group input-group-lg">
-                      <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+                      <!-- <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for..."> -->
+                      
+                      <select class="js-example-basic-single" name="state">
+                          <option value="AL">Alabama</option>
+                            ...
+                          <option value="WY">Wyoming</option>
+                        </select>
+
                       <span class="input-group-btn">
                         <button class="btn btn-secondary" type="submit">Go!</button>
                       </span>

@@ -33,6 +33,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # installed apps
+    'dal',
+    'dal_select2',
+
     # default apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -46,6 +50,7 @@ INSTALLED_APPS = [
     'api',
     'jobs',
     'accounts',
+    'core', 
 
     # installed apps
     'django_extensions',
@@ -184,6 +189,9 @@ ACCOUNT_USERNAME_BLACKLIST = ['admin']
 ACCOUNT_USER_DISPLAY = 'user.email'
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_REQUIRED = True
+
+# custom user model
+AUTH_USER_MODEL = 'accounts.User'
 
 try:
     from src.settings.local import *  # noqa
