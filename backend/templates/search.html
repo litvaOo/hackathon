@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+    {% for tutor in tutors %}
+        <h1>{{ tutor.user.first_name }}</h1>
+    {% endfor %}
+        
+{% endblock content %}
+    

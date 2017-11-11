@@ -9,8 +9,7 @@ urlpatterns = [
         include('rest_framework.urls', namespace='rest_framework')
     ),
     url(r'^api/', include('api.urls', namespace='api')),
-    # TODO
-    url(r'^accounts/', include('accounts.urls')),
-    url(r'^core/', include('core.urls')),
-    url(r'^jobs/', include('jobs.urls'))
+    url(r'^', include('accounts.urls')),
+    url(r'^', include('core.urls', namespace="core")),
+    url(r'^', include('jobs.urls', namespace="jobs"))
 ]

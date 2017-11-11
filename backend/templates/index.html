@@ -3,7 +3,7 @@
 
 {% block extra_head %}
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.css">
 {% endblock extra_head %}
   
 {% block content %}
@@ -11,20 +11,9 @@
         <div id="search-section" class="section bg-image">
             <div class="info">
                 <h1 class="text-center text-white mb-5 pacifico">Найди СВОЙ ПУТЬ</h1>
-                <form class="form-inline justify-content-center">
-                    <div class="input-group input-group-lg">
-                      <!-- <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for..."> -->
-                      
-                      <select class="js-example-basic-single" name="state">
-                          <option value="AL">Alabama</option>
-                            ...
-                          <option value="WY">Wyoming</option>
-                        </select>
-
-                      <span class="input-group-btn">
-                        <button class="btn btn-secondary" type="submit">Go!</button>
-                      </span>
-                    </div>
+                <form class="justify-content-center" method="GET" action="{% url 'search_results' %}">
+                    <select class="category-search" placeholder="Search for..." name="category" id="id_category"></select>
+                    <button class="btn btn-secondary" type="submit">Go!</button>
                 </form>
             </div>
         </div>
@@ -76,3 +65,18 @@
         <div class="section"></div>
     </div>
 {% endblock content %}
+
+{% block extra_body %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
+<script>
+$('.category-search').select2({
+  theme: 'bootstrap',
+  width: '100%',
+  ajax: {
+    url: '{% url 'jobs:category-autocomplete' %}',
+    dataType: 'json'
+
+  }
+});</script>
+{% endblock extra_body %}
+  

@@ -75,3 +75,6 @@ class Tutor(models.Model):
         User, related_name='tutor', on_delete=models.CASCADE)
     about = models.CharField(max_length=150)
     desc = models.CharField(max_length=500)
+
+    def __str__(self):
+         return self.user.first_name

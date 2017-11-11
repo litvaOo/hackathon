@@ -7,7 +7,11 @@ class CategoryManager(models.Manager):
 
 class Category(models.Model):
     title = models.CharField(max_length=50)
-    image = models.ImageField(upload_to="category")
+    image = models.ImageField(upload_to="category", blank=True, null=True)
+    parent_category = models.ForeignKey('self', related_name="sub_category", blank=True, null=True) 
+
+    def __str__(self):
+        return self.title
 
 
 class JobManager(models.Manager):
@@ -26,11 +30,9 @@ class Job(models.Model):
     price = models.IntegerField()
     price_per = models.SmallIntegerField(choices=P_CHOICES)
     category = models.ForeignKey(
-        'Category', related_name='category', on_delete=models.CASCADE
-    )
+        'Category', related_name='category', on_delete=models.CASCADE)
     tutor = models.ForeignKey(
-        'accounts.Tutor', related_name='tutor', on_delete=models.CASCADE
-    )
+        'accounts.Tutor', related_name='jobs', on_delete=models.CASCADE)
 
 
 class ScheduleManager(models.Manager):

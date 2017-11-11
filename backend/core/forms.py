@@ -1,11 +1,11 @@
 from django import forms
 from dal import autocomplete
+from dal_select2 import widgets
 from jobs.models import Category
 
 
-class LandingSearchForm(forms.ModelForm):
+class LandingSearchForm(forms.Form):
     category = forms.ModelChoiceField(
         queryset=Category.objects.all(),
-        widget=autocomplete.ModelSelect2(url='core:category-autocomplete')
+        widget=widgets.ModelSelect2(url='jobs:category-autocomplete')
     )
-    some_field = forms.CharField()
