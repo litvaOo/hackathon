@@ -1,13 +1,65 @@
 {% extends "base.html" %}
 {% block title %}Home page{% endblock title %}
 {% block content %}
-    <section>
-        <div class="section-header">Description</div>Temporibus voluptatibus sed, at consequuntur excepturi vero recusandae iste voluptas optio molestiae nihil tenetur illum culpa. Dolorem ab maiores sequi, vero alias beatae, repellat explicabo fugiat atque qui assumenda ratione similique rerum totam consequuntur sit reprehenderit sint accusantium iste nulla quasi nobis vel! Sapiente quos est atque tenetur consequuntur incidunt.
-    </section>
-    <section>
-        <div class="section-header">Advantages</div>Temporibus voluptatibus sed, at consequuntur excepturi vero recusandae iste voluptas optio molestiae nihil tenetur illum culpa. Dolorem ab maiores sequi, vero alias beatae, repellat explicabo fugiat atque qui assumenda ratione similique rerum totam consequuntur sit reprehenderit sint accusantium iste nulla quasi nobis vel! Sapiente quos est atque tenetur consequuntur incidunt.
-    </section>
-    <section>
-        <div class="section-header">About us</div>Temporibus voluptatibus sed, at consequuntur excepturi vero recusandae iste voluptas optio molestiae nihil tenetur illum culpa. Dolorem ab maiores sequi, vero alias beatae, repellat explicabo fugiat atque qui assumenda ratione similique rerum totam consequuntur sit reprehenderit sint accusantium iste nulla quasi nobis vel! Sapiente quos est atque tenetur consequuntur incidunt.
-    </section>
+    <div id="full-page">
+        <div id="search-section" class="section bg-image">
+            <div class="info">
+                <h1 class="text-center text-white mb-5 pacifico">Найди СВОЙ ПУТЬ</h1>
+                <form class="form-inline justify-content-center">
+                    <div class="input-group input-group-lg">
+                      <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+                      <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="submit">Go!</button>
+                      </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="category-section" class="section bg-image text-center">
+            <div class="container">
+                <h1 class="pacifico" style="margin-bottom: 20px;">Найдите то, что ищете</h1>
+                <div class="card-deck">
+                  <div class="card">
+                    <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title mb-0">Lorem ipsum dolor.</h4>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title mb-0">Lorem ipsum dolor.</h4>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title mb-0">Lorem ipsum dolor.</h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-deck" style="margin-top: 20px;">
+                  <div class="card">
+                    <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title mb-0">Lorem ipsum dolor.</h4>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title mb-0">Lorem ipsum dolor.</h4>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title mb-0">Lorem ipsum dolor.</h4>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="section"></div>
+    </div>
 {% endblock content %}

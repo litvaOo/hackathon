@@ -43,6 +43,7 @@ Project Structure
   * **./assets/** Assets folder
     * **./js/** Javascript (including ES2015 syntax)
     * **./scss/** Sass
+    * **./css/** CSS
     * **./styl/** Stylus
     * **./fonts/** Fonts
     * **./images/** Images

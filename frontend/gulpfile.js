@@ -24,6 +24,20 @@ gulp.task("babel", function() {
     .pipe(gulp.dest("./dist/js/"));
 });
 
+gulp.task("babel-dev", function() {
+  gulp
+    .src("./assets/js/**/*.js")
+    .pipe(include())
+    .pipe(sourcemaps.init())
+    .pipe(
+      babel({
+        presets: ["env"]
+      })
+    )
+    .pipe(sourcemaps.write("."))
+    .pipe(gulp.dest("./dist/js/"));
+});
+
 gulp.task("scss", function() {
   gulp
     .src("./assets/scss/**/*.scss")
@@ -71,11 +85,23 @@ gulp.task("images", function() {
   gulp.src("./assets/images/**/*").pipe(gulp.dest("./dist/images"));
 });
 
+gulp.task("css", function() {
+  gulp.src("./assets/css/**/*").pipe(gulp.dest("./dist/css"));
+});
+
 gulp.task("watcher", function() {
   gulp.watch("./assets/scss/**/*.scss", ["scss"]);
   gulp.watch("./assets/styl/**/*.styl", ["stylus"]);
-  gulp.watch("./assets/js/**/*.js", ["babel"]);
+  gulp.watch("./assets/js/**/*.js", ["babel-dev"]);
 });
 
-gulp.task("build", ["scss", "stylus", "babel", "fonts", "images"]);
-gulp.task("default", ["scss", "stylus", "babel", "fonts", "images", "watcher"]);
+gulp.task("build", ["css", "scss", "stylus", "babel", "fonts", "images"]);
+gulp.task("default", [
+  "css",
+  "scss",
+  "stylus",
+  "babel-dev",
+  "fonts",
+  "images",
+  "watcher"
+]);
