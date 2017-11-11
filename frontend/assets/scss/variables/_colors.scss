@@ -1,6 +1,39 @@
 $purple: #9561f0;
-$white: #fff;
 $gray: #333;
 $light-gray: #aaa;
-$blue: #5AA5FF;
-$green: #299245;
+$blue: #5aa5ff;
+
+$white: #fcfcfc;
+$black: #0c090d;
+$red: #f45b69;
+$green: #74d3ae;
+$dark-red: #873d47;
+
+.bg {
+  &-red {
+    background-color: $red !important;
+  }
+  &-white {
+    background-color: $white !important;
+  }
+  &-green {
+    background-color: $green !important;
+  }
+  &-blue {
+    background-color: $blue !important;
+  }
+}
+.text {
+  &-red {
+    color: $red !important;
+  }
+  &-white {
+    color: $white !important;
+  }
+  &-green {
+    color: $green !important;
+  }
+  &-blue {
+    color: $blue !important;
+  }
+}

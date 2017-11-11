@@ -1,7 +1,7 @@
-from django.conf.urls import url, include
+from django.conf.urls import include, url
 from django.contrib import admin
-
-from src.views import HomePageView, LoginPageView, SignUpPageView
+from src.views import (HomePageView, LoginPageView, ProfilePageView,
+                       SignUpPageView)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -13,5 +13,6 @@ urlpatterns = [
     url(r'^api/', include('api.urls', namespace='api')),
     url(r'^login/$', LoginPageView.as_view(), name='login'),
     url(r'^signup/$', SignUpPageView.as_view(), name='signup'),
+    url(r'^profile/$', ProfilePageView.as_view(), name='profile'),
     url(r'^$', HomePageView.as_view(), name='home')
 ]

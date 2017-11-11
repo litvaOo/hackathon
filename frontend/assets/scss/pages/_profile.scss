@@ -1,0 +1,51 @@
+.profile-section {
+  background-color: $white;
+  min-height: 100%;
+
+  .header {
+    height: 250px;
+    position: relative;
+    .background-image {
+      background-image: url("//bgtorrentz.net/wp-content/themes/bgtorrentz/images/bg1.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: top center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      filter: blur(50px);
+      z-index: 0;
+    }
+    &-avatar {
+      height: 150px;
+      width: 150px;
+      border-radius: 50%;
+      border: 10px solid white;
+      display: inline-block;
+      position: absolute;
+      bottom: -75px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      background-image: url("//bgtorrentz.net/wp-content/themes/bgtorrentz/images/bg1.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: top center;
+    }
+  }
+  .main {
+    padding: 60px;
+    & > * {
+      margin-top: 50px;
+    }
+    &-about {
+      p {
+        margin-top: 20px;
+      }
+    }
+    &-jobs {
+    }
+  }
+}
