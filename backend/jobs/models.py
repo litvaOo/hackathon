@@ -25,8 +25,12 @@ class Job(models.Model):
     title = models.CharField(max_length=50)
     price = models.IntegerField()
     price_per = models.SmallIntegerField(choices=P_CHOICES)
-    category = models.ForeignKey('Category', related_name='category', on_delete=models.CASCADE)
-    tutor = models.ForeignKey('accounts.Tutor', related_name='tutor', on_delete=models.CASCADE)
+    category = models.ForeignKey(
+        'Category', related_name='category', on_delete=models.CASCADE
+    )
+    tutor = models.ForeignKey(
+        'accounts.Tutor', related_name='tutor', on_delete=models.CASCADE
+    )
 
 
 class ScheduleManager(models.Manager):
@@ -43,8 +47,12 @@ class ReviewManager(models.Manager):
 
 
 class Review(models.Model):
-    sender = models.ForeignKey('accounts.User', related_name='sender', on_delete=models.CASCADE)
-    recip = models.ForeignKey('accounts.Tutor', related_name='recip', on_delete=models.CASCADE)
+    sender = models.ForeignKey(
+        'accounts.User', related_name='sender', on_delete=models.CASCADE
+    )
+    recip = models.ForeignKey(
+        'accounts.Tutor', related_name='recip', on_delete=models.CASCADE
+    )
     quality = models.IntegerField()
     price = models.IntegerField()
     desc = models.CharField(max_length=200)

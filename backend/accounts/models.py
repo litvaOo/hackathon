@@ -61,14 +61,17 @@ class User(AbstractBaseUser, PermissionsMixin):
         '''
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
+
 class Achievments(models.Model):
     text = models.TextField()
     organization = models.CharField(max_length=255)
     scan_file = models.FileField()
-    owner = models.ForeignKey(User, related_name='achievments', on_delete=models.CASCADE)
+    owner = models.ForeignKey(
+        User, related_name='achievments', on_delete=models.CASCADE)
 
 
 class Tutor(models.Model):
-    user = models.ForeignKey(User, related_name='tutor', on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        User, related_name='tutor', on_delete=models.CASCADE)
     about = models.CharField(max_length=150)
     desc = models.CharField(max_length=500)
