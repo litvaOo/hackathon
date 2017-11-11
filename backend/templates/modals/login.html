@@ -1,6 +1,7 @@
 <div class="login-section">
     <div class="login-form">
         <form method="POST" class="animated zoomIn">
+            {% csrf_token %}
             <div class="header">Sign In <a href="#!"><span class="close-button">x</span></a></div>
             <div class="main">
                 <div class="login-form-input">
