@@ -7,10 +7,10 @@ urlpatterns = [
     ),
     url(
         r'^profile/(?P<pk>\d+)/$',
-        views.ProfileTutorPageView.as_view(), name='profile'
+        views.ProfilePageView.as_view(), name='profile'
     ),
     url(
         r'^profile/$',
-        views.ProfileTutorPageView.as_view(), name='self-profile'
+        views.ProfilePageView.as_view(), name='self-profile'
     ),
 ]

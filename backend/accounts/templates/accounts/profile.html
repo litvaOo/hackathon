@@ -9,10 +9,11 @@
 <div class="container">
   <div class="main">
       <div class="main-about">
-          <h2 class="text-center">Max Saykov</h2>
+          <h2 class="text-center">{{ user.get_full_name }}</h2>
           <h3 class="text-center">Kharkov, UA</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil aut quasi, numquam consequuntur blanditiis enim. Nam atque est minima quas.</p>
       </div>
+      {% if user.tutor.pk %}
       <div class="main-jobs">
           <div class="row">
             <h1 class="col-md-12">Навыки</h1>
@@ -49,6 +50,7 @@
             </div>
           </div>
       </div>
+      {% endif %}
       <div class="main-achievements">
           <div class="row">
             <h1 class="col-md-12">Достижения</h1>
