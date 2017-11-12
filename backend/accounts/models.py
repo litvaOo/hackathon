@@ -68,6 +68,11 @@ class Achievments(models.Model):
     scan_file = models.FileField()
     owner = models.ForeignKey(
         User, related_name='achievments', on_delete=models.CASCADE)
+    is_verified = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.text
+
 
 
 class Tutor(models.Model):

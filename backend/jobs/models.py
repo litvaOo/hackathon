@@ -26,6 +26,7 @@ class Job(models.Model):
         'Category', related_name='category', on_delete=models.CASCADE)
     tutor = models.ForeignKey(
         'accounts.Tutor', related_name='jobs', on_delete=models.CASCADE)
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title
@@ -46,3 +47,23 @@ class Review(models.Model):
     quality = models.IntegerField()
     price = models.IntegerField()
     desc = models.CharField(max_length=200)
+    reviewed_job = models.ForeignKey(
+        'Job', related_name='review', on_delete=models.CASCADE, blank=True, null=True
+    )
+
+    def __str__(self):
+        return self.desc
+
+
+class Booking(models.Model):
+    day = models.DateField()
+    duration = models.DurationField()
+    job = models.ForeignKey(
+        'Job', related_name='booking', on_delete=models.CASCADE
+    )
+    sender = models.ForeignKey(
+        'accounts.User', related_name='booking', on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return self.booked_job.title
