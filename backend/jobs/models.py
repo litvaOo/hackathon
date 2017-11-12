@@ -4,7 +4,8 @@ from accounts.models import Tutor, User
 
 class Category(models.Model):
     title = models.CharField(max_length=255)
-    image = models.ImageField(upload_to="category/", blank=True, null=True)
+    image = models.ImageField(
+        upload_to="category/", blank=True, null=True, max_length=1000)
     parent_category = models.ForeignKey(
         'self', related_name="sub_category", blank=True, null=True)
 

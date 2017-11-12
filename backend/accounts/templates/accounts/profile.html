@@ -3,8 +3,8 @@
 {% block content %}
 <div class="profile-section">
   <div class="header">
-    <div class="background-image" style="{% if user.avatar %}background-image: url({{ user.avatar.url }});{% endif %}"></div>
-    <div class="header-avatar" style="{% if user.avatar %}background-image: url({{ user.avatar.url }});{% endif %}"></div>
+    <div class="background-image" style="{% if user.avatar %}background-image: url({{ user.avatar }});{% endif %}"></div>
+    <div class="header-avatar" style="{% if user.avatar %}background-image: url({{ user.avatar }});{% endif %}"></div>
   </div>
 <div class="container">
   <div class="main">
@@ -24,7 +24,7 @@
                 <div class="border-block red-hover">
                     <div class="border-block-text">
                         <div class="title">{{ job.title }}</div>
-                        <div>{{ job.price }}</div>
+                        <div>${{ job.price }} / {{ job.get_price_per_display }}</div>
                     </div>
                 </div>
             </div>

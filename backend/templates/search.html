@@ -13,7 +13,7 @@
             <select class="category-search form-inline" placeholder="Search for..." name="category" id="id_category"></select>
           </div>
           <div class="col-md-2">
-            <button class="button block" type="submit">Go</button>
+            <button class="button block" type="submit">Поиск</button>
           </div>
         </div>
       </form>
@@ -21,12 +21,12 @@
     <div class="search-results">
       <div class="row">
           {% for tutor in tutors %}
-          <div class="col-md-3">
+          <div class="col-md-3 mb-2">
           <a href="{% url 'accounts:profile' tutor.user.pk %}">
               <div class="results-block">
-                <div class="avatar" style="background-image: url('{% if tutor.user.avatar %}{{ tutor.user.avatar.url }}{% endif %}');"></div>
+                <div class="avatar" style="background-image: url('{% if tutor.user.avatar %}{{ tutor.user.avatar }}{% endif %}');"></div>
                 <div class="info">
-                  <div class="name">{{ tutor.user.get_full_name }}</div>
+                  <div class="name">{{ tutor.user.last_name }} {{ tutor.user.first_name.0 }}.</div>
                   <div class="skills">
                     <ul>
                       {% for job in tutor.jobs.all %}

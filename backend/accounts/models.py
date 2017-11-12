@@ -30,7 +30,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name='Avatar',
         blank=True,
         null=True,
-        upload_to='avatars/'
+        upload_to='avatars/',
+        max_length=1000
     )
 
     objects = UserManager()

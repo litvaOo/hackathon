@@ -3,8 +3,8 @@
 {% block content %}
 <div class="profile-section">
   <div class="header">
-    <div class="background-image"></div>
-    <div class="header-avatar"></div>
+    <div class="background-image" style="{% if user.avatar %}background-image: url({{ user.avatar }});{% endif %}"></div>
+    <div class="header-avatar" style="{% if user.avatar %}background-image: url({{ user.avatar }});{% endif %}"></div>
   </div>
   <div class="main edit d-flex justify-content-center">
     <form method="POST" action="{% url 'accounts:edit-profile' %}">
