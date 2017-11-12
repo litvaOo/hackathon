@@ -25,11 +25,14 @@ class ProfilePageView(DetailView):
     context_object_name = 'user'
 
     def get_object(self, **kwargs):
-        if 'pk' not in kwargs and not self.request.user.is_authenticated():
+        if (
+            'pk' not in self.kwargs and
+            not self.request.user.is_authenticated()
+        ):
             raise Http404('User profile not found')
-        if 'pk' not in kwargs:
+        if 'pk' not in self.kwargs:
             return get_object_or_404(self.model, email=self.request.user.email)
-        return get_object_or_404(self.model, pk=kwargs.get('pk'))
+        return get_object_or_404(self.model, pk=self.kwargs.get('pk'))
 
     def get_context_data(self, *args, **kwargs):
         context = super(
@@ -61,12 +64,18 @@ class ProfileUpdateView(UpdateView):
     def form_valid(self, form):
         if self.object.tutors.exists():
             tutor_form = TutorProfileForm({
-                'about': self.request.POST.get('about'),
-                'desc': self.request.POST.get('desc')
+                'about': self.request.POST.get('about')
             }, instance=self.object.tutors.first())
             if not tutor_form.is_valid():
                 return self.render_to_response(
                     self.get_context_data(form=tutor_form)
                 )
             tutor_form.save()
+
+        if self.request.POST.get('teacher') == 'yes':
+            Tutor.objects.create(
+                user=self.request.user,
+                about=self.request.POST.get('about')
+            )
+
         return super(ProfileUpdateView, self).form_valid(form)

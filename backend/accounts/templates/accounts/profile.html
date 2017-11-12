@@ -3,19 +3,19 @@
 {% block content %}
 <div class="profile-section">
   <div class="header">
-    <div class="background-image"></div>
-    <div class="header-avatar"></div>
+    <div class="background-image" style="{% if user.avatar %}background-image: url({{ user.avatar.url }});{% endif %}"></div>
+    <div class="header-avatar" style="{% if user.avatar %}background-image: url({{ user.avatar.url }});{% endif %}"></div>
   </div>
 <div class="container">
   <div class="main">
       <div class="main-about">
           <h2 class="text-center">{{ user.get_full_name }}</h2>
           <h3 class="text-center">{{ user.city }}, {{ user.country }}</h3>
-          {% if user.tutors %}
+          {% if user.tutors.exists %}
             <p>{{ user.tutors.first.about }}</p>
           {% endif %}
       </div>
-      {% if user.tutors %}
+      {% if user.tutors.exists %}
       <div class="main-jobs">
           <div class="row">
             <h1 class="col-md-12">Навыки</h1>

@@ -33,8 +33,10 @@
 </head>
 
 <body>
-    <div class="modal" id="modal-login">{% include "modals/login.html" %}</div>
-    <div class="modal" id="modal-signup">{% include "modals/signup.html" %}</div>
+    {% if not user.is_authenticated %}
+        <div class="modal" id="modal-login">{% include "modals/login.html" %}</div>
+        <div class="modal" id="modal-signup">{% include "modals/signup.html" %}</div>
+    {% endif %}
     {% include "components/navbar.html" %}
     {% block content %}{% endblock content %}
     <script

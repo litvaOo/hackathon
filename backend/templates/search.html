@@ -22,8 +22,9 @@
       <div class="row">
           {% for tutor in tutors %}
           <div class="col-md-3">
+          <a href="{% url 'accounts:profile' tutor.user.pk %}">
               <div class="results-block">
-                <div class="avatar" style="background-image: url({% if tutor.user.avatar %}{{ tutor.user.avatar.url }}{% endif %});"></div>
+                <div class="avatar" style="background-image: url('{% if tutor.user.avatar %}{{ tutor.user.avatar.url }}{% endif %}');"></div>
                 <div class="info">
                   <div class="name">{{ tutor.user.get_full_name }}</div>
                   <div class="skills">
@@ -35,6 +36,7 @@
                   </div>
                 </div>
               </div>
+          </a>
           </div>
           {% endfor %}
       </div>

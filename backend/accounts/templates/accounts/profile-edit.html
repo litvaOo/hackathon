@@ -6,14 +6,49 @@
     <div class="background-image"></div>
     <div class="header-avatar"></div>
   </div>
-  <form method="POST" action="{% url 'accounts:edit-profile' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    {% if object.tutors.exists %}
-      {{ tutor_form.as_p }}
-    {% endif %}
-    <button type="submit">Save</button>
-  </form>
+  <div class="main edit d-flex justify-content-center">
+    <form method="POST" action="{% url 'accounts:edit-profile' %}">
+      {% csrf_token %}
+      <div class="form-input-field">
+        <label for="{{ form.email.auto_id }}">E-mail</label>
+        {{ form.email }}
+      </div>
+      <div class="form-input-field">
+        <label for="{{ form.first_name.auto_id }}">Имя</label>
+        {{ form.first_name }}
+      </div>
+      <div class="form-input-field">
+        <label for="{{ form.last_name.auto_id }}">Фамилия</label>
+        {{ form.last_name }}
+      </div>
+      <div class="form-input-field">
+        <label for="id_location">Местоположение</label>
+        <input type="text" name="location" id="id_location" value="{% if form.city.value %}{{ form.city.value }}, {{ form.country.value }}{% endif %}">
+      </div>
+      {% if not object.tutors.exists %}
+      <div class="form-input-field">
+        <label for="id_teacher">Стать преподавателем?</label>
+        <select type="text" id="id_teacher" name="teacher">
+            <option value="no">Нет</option>
+            <option value="yes">Да</option>
+        </select>
+      </div>
+      <div class="form-input-field about-me" style="display: none;">
+        <label for="id_about">Обо мне</label>
+        <textarea name="about" id="id_about"></textarea>
+      </div>
+      {% endif %}
+      {% if object.tutors.exists %}
+        <div class="form-input-field">
+          <label for="{{ tutor_form.about.auto_id }}">Обо мне</label>
+          {{ tutor_form.about }}
+        </div>
+      {% endif %}
+      <input type="hidden" id="id_city" name="city" value="{{ form.city.value }}">
+      <input type="hidden" id="id_country" name="country" value="{{ form.country.value }}">
+      <button type="submit" class="button">Сохранить</button>
+    </form>
+  </div>
 </div>
 
 <div class="modal" id="modal-job-create">{% include "modals/job-create.html" %}</div>

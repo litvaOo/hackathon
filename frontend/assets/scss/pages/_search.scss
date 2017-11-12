@@ -8,11 +8,23 @@
   }
   .search-results {
     margin-top: 50px;
+    a {
+      color: $black;
+      text-decoration: none;
+      &:hover {
+        color: $black;
+        text-decoration: none;
+      }
+    }
     .results-block {
       $border-radius: 10px;
       background-color: white;
       box-shadow: 2px 2px 10px #aaa;
       border-radius: $border-radius;
+      &:hover {
+        background-color: $blue;
+        color: white;
+      }
       .avatar {
         height: 150px;
         width: 100%;
