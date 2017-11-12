@@ -1,10 +1,40 @@
 {% extends "base.html" %}
-
 {% block content %}
-    
-    {% for tutor in tutors %}
-        <h1>{{ tutor.user.first_name }}</h1>
-    {% endfor %}
-        
+<div class="search-section">
+  <div class="container">
+    <div class="search-form">
+      <form>
+        <div class="row">
+          <div class="col-md-10">
+            <input type="text" class="form-control" name="category">
+          </div>
+          <div class="col-md-2">
+            <button class="button block" type="submit">Go</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="search-results">
+      <div class="row">
+          {% for tutor in tutors %}
+          <div class="col-md-3">
+              <div class="results-block">
+                <div class="avatar" style="background-image: url({% if tutor.user.avatar %}{{ tutor.user.avatar.url }}{% endif %});"></div>
+                <div class="info">
+                  <div class="name">{{ tutor.user.get_full_name }}</div>
+                  <div class="skills">
+                    <ul>
+                      {% for job in tutor.jobs.all %}
+                      <li>{{ job.title }}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock content %}
-    

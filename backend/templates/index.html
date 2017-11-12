@@ -5,13 +5,13 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.css">
 {% endblock extra_head %}
-  
+
 {% block content %}
     <div id="full-page">
         <div id="search-section" class="section bg-image">
             <div class="info">
                 <h1 class="text-center text-white mb-5 pacifico">Найди СВОЙ ПУТЬ</h1>
-                <form class="justify-content-center" method="GET" action="{% url 'search_results' %}">
+                <form class="justify-content-center" method="GET" action="{% url 'accounts:search_results' %}">
                     <select class="category-search" placeholder="Search for..." name="category" id="id_category"></select>
                     <button class="btn btn-secondary" type="submit">Go!</button>
                 </form>
@@ -79,4 +79,4 @@ $('.category-search').select2({
   }
 });</script>
 {% endblock extra_body %}
-  
+
