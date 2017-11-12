@@ -61,6 +61,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         '''
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
+    def __str__(self):
+        return self.get_full_name()
+
 
 class Achievments(models.Model):
     text = models.TextField()

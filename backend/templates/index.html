@@ -23,31 +23,31 @@
                 <div class="card-deck">
                   {% for category in categories|slice:":3" %}
                   <div class="card">
-                    <div class="category-avatar" style="{% if category.image %}background-image: url({{ category.image.url }});{% endif %}"></div>
+                    <img class="card-img-top" src="{{ category.image.url }}" alt="Card image cap">
                     <div class="card-body">
                       <h4 class="card-title mb-0">{{ category.title }}</h4>
                     </div>
                   </div>
                   {% endfor %}
+            </div>
                 <div class="card-deck" style="margin-top: 20px;">
-                  {% for category in categories|slice:":3" %}
+                  {% for category in categories|slice:"3:" %}
                   <div class="card">
-                    <div class="category-avatar" style="{% if category.image %}background-image: url({{ category.image.url }});{% endif %}"></div>
+                    <img class="card-img-top" src="{{ category.image.url }}" alt="Card image cap">
                     <div class="card-body">
                       <h4 class="card-title mb-0">{{ category.title }}</h4>
                     </div>
                   </div>
                   {% endfor %}
                 </div>
-            </div>
         </div>
+    </div>
         <div class="section about-section bg-image text-center">
           <div class="container">
               <h1 class="pacifico" style="margin-bottom: 20px;">О команде</h1>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus voluptatem reiciendis eos magni, voluptatum perspiciatis nobis enim laboriosam. Quidem possimus ipsum, atque blanditiis nulla aperiam dolore iste tempora obcaecati ea, ducimus inventore sed minus repudiandae perferendis mollitia est illo nam harum ex. Harum deserunt aperiam adipisci voluptate, qui totam fuga! Perferendis sed iusto, similique, illum iure totam ad temporibus tempora voluptates odit. Asperiores corporis sed veritatis nulla, debitis! Ipsam voluptatum possimus voluptatem dolorem id quaerat distinctio similique voluptates facilis dignissimos nesciunt reprehenderit, ut ipsum, saepe facere blanditiis inventore placeat earum tempora? Voluptate amet enim facilis, cupiditate corporis repudiandae maiores at.</p>
           </div>
         </div>
-    </div>
 {% endblock content %}
 
 {% block extra_body %}
