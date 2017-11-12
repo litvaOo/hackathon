@@ -13,4 +13,8 @@ urlpatterns = [
         r'^profile/$',
         views.ProfilePageView.as_view(), name='self-profile'
     ),
+    url(
+        r'^profile/edit/$',
+        views.ProfileUpdateView.as_view(), name='edit-profile'
+    ),
 ]

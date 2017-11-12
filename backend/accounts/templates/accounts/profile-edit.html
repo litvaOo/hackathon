@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}EDIT{% endblock title %}
+{% block content %}
+<div class="profile-section">
+  <div class="header">
+    <div class="background-image"></div>
+    <div class="header-avatar"></div>
+  </div>
+  <form method="POST" action="{% url 'accounts:edit-profile' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if object.tutors.exists %}
+      {{ tutor_form.as_p }}
+    {% endif %}
+    <button type="submit">Save</button>
+  </form>
+</div>
+
+<div class="modal" id="modal-job-create">{% include "modals/job-create.html" %}</div>
+{% endblock content %}
