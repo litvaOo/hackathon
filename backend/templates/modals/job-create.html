@@ -1,10 +1,26 @@
 <div class="login-section">
-    <div class="login-form">
+    <div class="login-form signup-form">
         <form method="POST" class="animated zoomIn" action="{% url 'jobs:job-create' %}">
             {% csrf_token %}
-            <div class="header">Войти <a href="#!"><span class="close-button">x</span></a></div>
+            <div class="header">Добавить работу <a href="#!"><span class="close-button">x</span></a></div>
             <div class="main">
-                {{job_create_form.as_p}}
+                <div class="login-form-input">
+                    <label for="id_title">Название</label>
+                    {{ job_create_form.title }}
+                </div>
+                <div class="login-form-input">
+                    <label for="id_price">Цена</label>
+                    {{ job_create_form.price }}
+                </div>
+                <div class="login-form-input">
+                    <label for="id_price">Цена за</label>
+                    {{ job_create_form.price_per }}
+                </div>
+                <div class="login-form-input">
+                    <label for="id_price">Категория</label>
+                    {{ job_create_form.category }}
+                </div>
+                {{ job_create_form.tutor.hidden }}
                 <button class="button block" type="submit" name="submit">Создать</button>
             </div>
         </form>

@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% block extra_head %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.css">
+{% endblock extra_head %}
 {% block content %}
 <div class="search-section">
   <div class="container">
@@ -6,7 +10,7 @@
       <form>
         <div class="row">
           <div class="col-md-10">
-            <input type="text" class="form-control" name="category">
+            <select class="category-search form-inline" placeholder="Search for..." name="category" id="id_category"></select>
           </div>
           <div class="col-md-2">
             <button class="button block" type="submit">Go</button>
@@ -38,3 +42,16 @@
   </div>
 </div>
 {% endblock content %}
+{% block extra_body %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
+<script>
+$('.category-search').select2({
+  theme: 'bootstrap',
+  width: '100%',
+  ajax: {
+    url: '{% url 'jobs:category-autocomplete' %}',
+    dataType: 'json'
+
+  }
+});</script>
+{% endblock extra_body %}
