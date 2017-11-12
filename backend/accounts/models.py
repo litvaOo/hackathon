@@ -14,8 +14,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(_('last name'), max_length=30, blank=True)
     date_joined = models.DateTimeField(_('date joined'), auto_now_add=True)
     is_active = models.BooleanField(_('active'), default=True)
-    is_superuser = models.BooleanField(_('superuser'), default=True)
-    is_staff = models.BooleanField(_('staff'), default=True)
+    is_superuser = models.BooleanField(_('superuser'), default=False)
+    is_staff = models.BooleanField(_('staff'), default=False)
     city = models.CharField(
         'City', max_length=50, blank=True, null=True
     )

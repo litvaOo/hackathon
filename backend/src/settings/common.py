@@ -193,6 +193,11 @@ ACCOUNT_EMAIL_REQUIRED = True
 # custom user model
 AUTH_USER_MODEL = 'accounts.User'
 
+# custom signup form
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'api.rest.serializers.SignupSerializer'
+}
+
 try:
     from src.settings.local import *  # noqa
 except ImportError:

@@ -1,6 +1,6 @@
 <div class="login-section">
     <div class="login-form signup-form">
-        <form method="POST" class="animated zoomIn" enctype="multipart/form-data">
+        <form method="POST" class="animated zoomIn" name="signup-form" enctype="multipart/form-data" action="{% url 'account_signup' %}">
             {% csrf_token %}
             <div class="header">Sign Up <a href="#!"><span class="close-button">x</span></a></div>
             <div class="social-section">

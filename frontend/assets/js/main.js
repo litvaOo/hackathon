@@ -88,6 +88,17 @@ jQuery(document).ready(function($) {
         $("span.error-message").text(error.responseJSON.non_field_errors);
       });
   });
+  // TODO
+  // $("form[name='signup-form']").on("submit", function(event) {
+  //   event.preventDefault();
+  //   $.post("/api/v1/rest-auth/registration/", $(this).serialize())
+  //     .then(function(response) {
+  //       window.location.reload();
+  //     })
+  //     .catch(function(error) {
+  //       $("span.error-message").text(error.responseJSON.non_field_errors);
+  //     });
+  // });
 });
 
 function initialize() {
@@ -105,7 +116,7 @@ function initialize() {
     );
     $("#id_country").val(
       place.address_components.filter(r => r.types[0] === "country")[0]
-        .short_name
+        .long_name
     );
   });
 }
