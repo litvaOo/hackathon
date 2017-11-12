@@ -1,4 +1,4 @@
-from accounts.models import User
+from accounts.models import User, Tutor
 from rest_framework import serializers
 
 
@@ -17,6 +17,8 @@ class SignupSerializer(serializers.Serializer):
     city = serializers.CharField(max_length=255, required=False)
     country = serializers.CharField(max_length=255, required=False)
     location = serializers.CharField(max_length=255, required=False)
+    teacher = serializers.CharField(max_length=255, required=False)
+    about = serializers.CharField(required=False)
     avatar = serializers.FileField(required=False)
 
     def validate_email(self, data):
@@ -35,7 +37,7 @@ class SignupSerializer(serializers.Serializer):
         return data
 
     def save(self, request, **kwargs):
-        return User.objects.create_user(
+        user = User.objects.create_user(
             email=self.data.get('email'),
             password=self.data.get('password'),
             first_name=self.data.get('first_name'),
@@ -44,3 +46,9 @@ class SignupSerializer(serializers.Serializer):
             country=self.data.get('country'),
             avatar=self.data.get('avatar')
         )
+        if self.data.get('teacher') == 'yes':
+            Tutor.objects.create(
+                user=user,
+                about=self.data.get('about')
+            )
+        return user

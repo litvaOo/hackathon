@@ -88,7 +88,6 @@ jQuery(document).ready(function($) {
         swal("Ошибка", "Пользователь с такими данными не был найден", "error");
       });
   });
-  // TODO
   $("form[name='signup-form']").on("submit", function(event) {
     event.preventDefault();
     var $form = $(this);
@@ -104,6 +103,15 @@ jQuery(document).ready(function($) {
         var key = Object.keys(response)[0];
         swal(key, response[key][0], "error");
       });
+  });
+
+  $('select[name="teacher"]').on("change", function(event) {
+    event.preventDefault();
+    if ($(this).val() === "yes") {
+      $(".about-me").slideDown("fast");
+    } else {
+      $(".about-me").slideUp("fast");
+    }
   });
 });
 
