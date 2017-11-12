@@ -203,7 +203,9 @@ div.section {
         .login-form-input {
           margin-bottom: 15px;
           label,
-          input {
+          input,
+          select,
+          textarea {
             display: inline-block;
             vertical-align: middle;
             margin: 0 5px;
@@ -212,7 +214,9 @@ div.section {
             width: 100px;
             text-align: right;
           }
-          input {
+          input,
+          select,
+          textarea {
             width: 180px;
             padding: 7px;
             font-size: 16px;
@@ -220,6 +224,11 @@ div.section {
             color: #333;
             border-radius: 4px;
             border: 1px solid $light-gray;
+            background-color: #fff;
+
+            &.is-invalid {
+              border-color: $red;
+            }
 
             &:focus {
               outline: none;
@@ -262,7 +271,9 @@ div.section {
           label {
             width: 170px;
           }
-          input {
+          input,
+          select,
+          textarea {
             width: 270px;
           }
         }
