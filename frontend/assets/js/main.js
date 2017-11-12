@@ -85,20 +85,26 @@ jQuery(document).ready(function($) {
         window.location.reload();
       })
       .catch(function(error) {
-        $("span.error-message").text(error.responseJSON.non_field_errors);
+        swal("Ошибка", "Пользователь с такими данными не был найден", "error");
       });
   });
   // TODO
-  // $("form[name='signup-form']").on("submit", function(event) {
-  //   event.preventDefault();
-  //   $.post("/api/v1/rest-auth/registration/", $(this).serialize())
-  //     .then(function(response) {
-  //       window.location.reload();
-  //     })
-  //     .catch(function(error) {
-  //       $("span.error-message").text(error.responseJSON.non_field_errors);
-  //     });
-  // });
+  $("form[name='signup-form']").on("submit", function(event) {
+    event.preventDefault();
+    var $form = $(this);
+    $.post("/api/v1/rest-auth/registration/", $(this).serialize())
+      .then(function(response) {
+        window.location.reload();
+      })
+      .catch(function(error) {
+        var response = error.responseJSON;
+        for (var key in response) {
+          $form.find(`*[name="${key}"]`).addClass("is-invalid");
+        }
+        var key = Object.keys(response)[0];
+        swal(key, response[key][0], "error");
+      });
+  });
 });
 
 function initialize() {
