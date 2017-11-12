@@ -1,9 +1,10 @@
 from django.db import models
+from accounts.models import Tutor, User
 
 
 class Category(models.Model):
-    title = models.CharField(max_length=50)
-    image = models.ImageField(upload_to="category", blank=True, null=True)
+    title = models.CharField(max_length=255)
+    image = models.ImageField(upload_to="category/", blank=True, null=True)
     parent_category = models.ForeignKey(
         'self', related_name="sub_category", blank=True, null=True)
 
@@ -23,9 +24,9 @@ class Job(models.Model):
     price = models.IntegerField()
     price_per = models.SmallIntegerField(choices=P_CHOICES)
     category = models.ForeignKey(
-        'Category', related_name='category', on_delete=models.CASCADE)
+        Category, related_name='jobs')
     tutor = models.ForeignKey(
-        'accounts.Tutor', related_name='jobs', on_delete=models.CASCADE)
+        Tutor, related_name='jobs')
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
@@ -36,34 +37,37 @@ class Schedule(models.Model):
     day = models.DateField()
     duration = models.DurationField()
 
+    def __str__(self):
+        return self.day
+
 
 class Review(models.Model):
     sender = models.ForeignKey(
-        'accounts.User', related_name='sender', on_delete=models.CASCADE
+        User, related_name='reviews'
     )
-    recip = models.ForeignKey(
-        'accounts.Tutor', related_name='recip', on_delete=models.CASCADE
+    recipient = models.ForeignKey(
+        Tutor, related_name='reviews'
     )
     quality = models.IntegerField()
     price = models.IntegerField()
-    desc = models.CharField(max_length=200)
-    reviewed_job = models.ForeignKey(
-        'Job', related_name='review', on_delete=models.CASCADE, blank=True, null=True
+    description = models.TextField()
+    job = models.ForeignKey(
+        'Job', related_name='reviews', blank=True, null=True
     )
 
     def __str__(self):
-        return self.desc
+        return self.description
 
 
 class Booking(models.Model):
     day = models.DateField()
     duration = models.DurationField()
     job = models.ForeignKey(
-        'Job', related_name='booking', on_delete=models.CASCADE
+        Job, related_name='bookings'
     )
     sender = models.ForeignKey(
-        'accounts.User', related_name='booking', on_delete=models.CASCADE
+        User, related_name='bookings'
     )
 
     def __str__(self):
-        return self.booked_job.title
+        return self.job.title

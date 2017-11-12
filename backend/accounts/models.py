@@ -65,21 +65,23 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Achievments(models.Model):
     text = models.TextField()
     organization = models.CharField(max_length=255)
-    scan_file = models.FileField()
+    scan_file = models.FileField(
+        upload_to='achievments/', blank=True, null=True)
     owner = models.ForeignKey(
-        User, related_name='achievments', on_delete=models.CASCADE)
+        User, related_name='achievments'
+    )
     is_verified = models.BooleanField(default=False)
 
     def __str__(self):
         return self.text
 
 
-
 class Tutor(models.Model):
     user = models.ForeignKey(
-        User, related_name='tutor', on_delete=models.CASCADE)
-    about = models.CharField(max_length=150)
-    desc = models.CharField(max_length=500)
+        User, related_name='tutors'
+    )
+    about = models.CharField(max_length=255, blank=True, null=True)
+    desc = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.user.first_name
