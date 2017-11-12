@@ -1,21 +1,14 @@
 from django.db import models
 
 
-class CategoryManager(models.Manager):
-    pass
-
-
 class Category(models.Model):
     title = models.CharField(max_length=50)
     image = models.ImageField(upload_to="category", blank=True, null=True)
-    parent_category = models.ForeignKey('self', related_name="sub_category", blank=True, null=True) 
+    parent_category = models.ForeignKey(
+        'self', related_name="sub_category", blank=True, null=True)
 
     def __str__(self):
         return self.title
-
-
-class JobManager(models.Manager):
-    pass
 
 
 class Job(models.Model):
@@ -34,18 +27,13 @@ class Job(models.Model):
     tutor = models.ForeignKey(
         'accounts.Tutor', related_name='jobs', on_delete=models.CASCADE)
 
-
-class ScheduleManager(models.Manager):
-    pass
+    def __str__(self):
+        return self.title
 
 
 class Schedule(models.Model):
     day = models.DateField()
     duration = models.DurationField()
-
-
-class ReviewManager(models.Manager):
-    pass
 
 
 class Review(models.Model):
