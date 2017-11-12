@@ -1,0 +1,12 @@
+<div class="login-section">
+    <div class="login-form">
+        <form method="POST" class="animated zoomIn" action="{% url 'jobs:job-create' %}">
+            {% csrf_token %}
+            <div class="header">Войти <a href="#!"><span class="close-button">x</span></a></div>
+            <div class="main">
+                {{job_create_form.as_p}}
+                <button class="button block" type="submit" name="submit">Создать</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -4,14 +4,18 @@ jQuery.fn.showModal = function(selector) {
   }
   jQuery(selector).fadeIn("fast");
   jQuery("body").addClass("no-scoll");
-  jQuery("#full-page").fullpage.setAllowScrolling(false);
+  if(jQuery("#full-page").length) {
+    jQuery("#full-page").fullpage.setAllowScrolling(false);
+  }
   return jQuery(this);
 };
 
 jQuery.fn.hideModal = function() {
   jQuery(".modal:visible").fadeOut("fast");
   jQuery("body").removeClass("no-scoll");
-  jQuery("#full-page").fullpage.setAllowScrolling(true);
+  if(jQuery("#full-page").length) {
+    jQuery("#full-page").fullpage.setAllowScrolling(true);
+  }
   return jQuery(this);
 };
 
@@ -58,14 +62,28 @@ jQuery(document).ready(function($) {
       .hideModal()
       .showModal("#modal-signup");
   });
+  $(".job-create-link").on("click", function(event) {
+    event.preventDefault();
+    $(this)
+      .hideModal()
+      .showModal("#modal-job-create");
+  });
 });
 
 function initialize() {
+
+  var options = {
+    types: ['(cities)']
+  }
+
   var input = document.getElementById('id_location');
-  var autocomplete = new google.maps.places.Autocomplete(input);
+  var autocomplete = new google.maps.places.Autocomplete(input, options);
   google.maps.event.addListener(autocomplete, 'place_changed', function () {
     var place = autocomplete.getPlace();
-    // TODO
+    $('#id_city').val(place.address_components.filter(r => r.types[0] === 'locality')[0].long_name)
+    $('#id_country').val(place.address_components.filter(r => r.types[0] === "country")[0].short_name)
   });
+
 }
+
 google.maps.event.addDomListener(window, 'load', initialize);
